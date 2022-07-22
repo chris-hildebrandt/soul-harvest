@@ -19,41 +19,52 @@
 <body>
   <nav class="container-fluid">
     <section class="row justify-content-center bg-dark text-light text-center p-2">
-      <h1 class="p-0 m-0">DPS: <span class="dps"></span><img class="image-fluid tombstone"
+      <h1 class="p-0 m-0">DPS: <span id="dps"></span> <img class="image-fluid tombstone"
           src="https://images.fineartamerica.com/images/artworkimages/medium/3/retro-pixel-game-over-gravestone-louis-l-sullivan-transparent.png">
         Soul Harvest <img class="image-fluid tombstone"
           src="https://images.fineartamerica.com/images/artworkimages/medium/3/retro-pixel-game-over-gravestone-louis-l-sullivan-transparent.png">
-        <img class="wallet-pic" src="assets/sv6ffPf.gif" alt="">:<span id="resource-counter"></span>
+        <img class="wallet-img" src="assets/sv6ffPf.gif" alt="">:<span id="resource-counter"></span>
       </h1>
     </section>
   </nav>
   <main class="container">
-    <section class="row">
-      <div class="col m-3">
+    <section class="row m-0 p-0">
+      <div class="col m-3 m-0 p-0">
         <button class="btn btn-warning upgrd" onclick="increaseStrength(weapon)">Upgrade Weapon</button>
+        <h3 class="m-0 pt-3 p-0 text-light">Cost:<span id="weapon"></span><img class="cost-img"
+            src="assets/sv6ffPf.gif" alt=""></h3>
       </div>
-      <div class="col-3 card text-end text-light">Strength</div>
+      <div class="col-3 card text-center text-light p-0 m-0"><h3>Strength</h3></div>
     </section>
-    <section class="row">
-      <div class="col m-3">
+    <section class="row m-0 p-0">
+      <div class="col m-3 m-0 p-0">
         <button class="btn btn-danger upgrd" onclick="increaseStrength(magic)">Upgrade Magic</button>
+        <h3 class="m-0 pt-3 p-0 text-light">Cost:<span id="magic"></span><img class="cost-img"
+            src="assets/sv6ffPf.gif" alt=""></h3>
       </div>
+      <div class="col-3 card text-center text-light"><h3>Magic</h3></div>
     </section>
-    <section class="row">
-      <div class="col m-3">
-        <button class="btn btn-success upgrd" onclick="increaseStrength(weapon)">Hire Pet</button>
+    <section class="row m-0 p-0">
+      <div class="col m-3 m-0 p-0">
+        <button class="btn btn-success upgrd" onclick="hirePet(pet)">Train Pet</button>
+        <h3 class="m-0 pt-3 p-0 text-light">Cost:<span id="pet"></span><img class="cost-img"
+            src="assets/sv6ffPf.gif" alt=""></h3>
       </div>
+      <div class="col-3 card text-center text-light p-0 m-0"><h3>Pet Strength</h3></div>
     </section>
-    <section class="row">
-      <div class="col m-3">
-        <button class="btn btn-primary upgrd" onclick="increaseStrength(weapon)">Hire Mercenary</button>
+    <section class="row m-0 p-0">
+      <div class="col m-3 m-0 p-0">
+        <button class="btn btn-primary upgrd" onclick="hirePet(merc)">Train Mercenary</button>
+        <h3 class="m-0 pt-3 p-0 text-light">Cost:<span id="merc"></span><img class="cost-img"
+            src="assets/sv6ffPf.gif" alt=""></h3>
       </div>
+      <div class="col-3 card text-center text-light p-0 m-0"><h3>Mercenary Strength</h3></div>
     </section>
     <section class="container">
-        <section class="img-backdrop">
-            <img class="death" onclick="earnResource()" src="assets/chars/LV42.gif" alt="">
-            <img class="overlay fire" src="assets/Blueflame.gif" alt="">
-        </section>
+      <section class="img-backdrop">
+        <img class="death" onclick="earnResource()" src="assets/chars/LV42.gif" alt="">
+        <img class="overlay fire" src="assets/Blueflame.gif" alt="">
+      </section>
     </section>
   </main>
   <script src="assets/app.js"></script>

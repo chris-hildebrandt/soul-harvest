@@ -25,14 +25,18 @@ main {
   min-height: 89vh;
 }
 
+.btn {
+  font-size: 30px;
+}
+
 .tombstone {
   max-width: 64px;
 }
 
 .img-backdrop {
   position: relative;
-  top: -200px;;
-  left: 300px;
+  top: -300px;;
+  left: 400px;
 }
 
 .fire {
@@ -46,8 +50,12 @@ main {
   min-width: 500px;
 }
 
-.wallet-pic {
+.wallet-img {
   max-width: 64px;
+}
+
+.cost-img {
+  max-width: 36px;
 }
 
 .death {
@@ -68,5 +76,15 @@ main {
 }
 
 .upgrd {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'IM Fell English SC', serif;
+}
+
+.card {
+  background-color: rgba(13, 65, 13, 0.6);
+  font-family: 'IM Fell English SC', serif;
+  border-color: goldenrod;
+}
+
+h3 {
+  font-family: 'IM Fell English SC', serif;
 }

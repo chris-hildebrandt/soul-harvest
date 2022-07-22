@@ -1,5 +1,6 @@
 let resource = 0
 let strength = 1
+let petDamage = 0
 
 let weapon = {
   strength: 1,
@@ -8,6 +9,16 @@ let weapon = {
 let magic = {
   strength: 5,
   cost: 200,
+}
+
+let pet = {
+  strength: 3,
+  cost: 250,
+}
+
+let mercenary = {
+  strength: 10,
+  cost: 1000,
 }
 
 function earnResource(){
@@ -22,8 +33,23 @@ function increaseStrength(upgrade){
     strength += upgrade.strength
     upgrade.cost = upgrade.cost*2
     drawResource()
+    drawCost(upgrade)
+    drawDps()
   } else {
     window.alert("you don't have enough resources!")
+  }
+}
+
+function hirePet(name){
+  if(resource >= name.cost){
+    resource -= name.cost
+    petDamage += name.strength
+    upgrade.cost = upgrade.cost*2
+    drawResource()
+    drawCost(name)
+    drawDps()
+  } else {
+    window.alert("you cannot purchase loyalty with good looks alone!")
   }
 }
 
@@ -32,4 +58,22 @@ function drawResource(){
   walletElm.innerText = resource
 }
 
+function drawDps(){
+  let dpsElm = document.getElementById("dps")
+  dpsElm.innerText = strength
+}
+
+function drawCost(upgrade){
+  let costElm = document.getElementById(upgrade)
+  costElm.innerText = upgrade.cost
+}
+
+function petAttack(){
+  resource += petDamage
+  drawResource()
+}
+
+setInterval(petAttack, 3000)
+
+drawDps()
 drawResource()
