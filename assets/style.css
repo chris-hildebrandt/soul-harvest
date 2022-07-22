@@ -1,0 +1,72 @@
+/* font-family: 'Bungee', cursive;
+font-family: 'Bungee Shade', cursive;
+font-family: 'DotGothic16', sans-serif;
+font-family: 'Grenze Gotisch', cursive;
+font-family: 'IM Fell English SC', serif;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Wendy One', sans-serif; */
+
+body {
+  background-color: rgb(4, 4, 4);
+}
+
+h1 {
+  /* font-family: 'Bungee', cursive; */
+  /* font-family: 'DotGothic16', sans-serif; */
+  /* font-family: 'Grenze Gotisch', cursive; */
+  /* font-family: 'IM Fell English SC', serif; */
+  font-family: 'Press Start 2P', cursive;
+}
+
+main {
+  background-image: url(http://twistedsifter.com/wp-content/uploads/2013/05/animated-gifs-of-fighting-game-backgrounds-37.gif);
+  background-position: center;
+  background-size: cover;
+  min-height: 89vh;
+}
+
+.tombstone {
+  max-width: 64px;
+}
+
+.img-backdrop {
+  position: relative;
+  top: -200px;;
+  left: 300px;
+}
+
+.fire {
+  opacity: .6;
+}
+
+.overlay {
+  position: absolute;
+  top: 0px;
+  left: -50px;
+  min-width: 500px;
+}
+
+.wallet-pic {
+  max-width: 64px;
+}
+
+.death {
+  position:absolute;
+  z-index: 100;
+  cursor: url(scythe.cur), pointer;
+}
+
+.death:hover{
+  transform: scale(1.05);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1px;
+}
+
+.upgrd {
+  font-family: 'Press Start 2P', cursive;
+}
