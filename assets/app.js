@@ -3,20 +3,24 @@ let strength = 1
 let petDamage = 0
 
 let weapon = {
+  name: "weapon",
   strength: 1,
   cost: 25,
 }
 let magic = {
+  name: "magic",
   strength: 5,
   cost: 200,
 }
 
 let pet = {
+  name: "pet",
   strength: 3,
   cost: 250,
 }
 
 let mercenary = {
+  name: "merc",
   strength: 10,
   cost: 1000,
 }
@@ -64,7 +68,8 @@ function drawDps(){
 }
 
 function drawCost(upgrade){
-  let costElm = document.getElementById(upgrade)
+  debugger
+  let costElm = document.getElementById(upgrade.name)
   costElm.innerText = upgrade.cost
 }
 

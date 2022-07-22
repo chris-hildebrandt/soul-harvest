@@ -8,6 +8,7 @@ font-family: 'Wendy One', sans-serif; */
 
 body {
   background-color: rgb(4, 4, 4);
+  overflow-x: hidden;
 }
 
 h1 {
@@ -35,7 +36,7 @@ main {
 
 .img-backdrop {
   position: relative;
-  top: -300px;;
+  top: -500px;;
   left: 400px;
 }
 
