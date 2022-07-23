@@ -69,7 +69,7 @@ function drawDps(){
 
 function drawCost(upgrade){
   debugger
-  let costElm = document.getElementById(upgrade.name)
+  let costElm = document.getElemenyId(upgrade.name)
   costElm.innerText = upgrade.cost
 }
 
