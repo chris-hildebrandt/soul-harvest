@@ -9,6 +9,7 @@ font-family: 'Wendy One', sans-serif; */
 body {
   background-color: rgb(4, 4, 4);
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 h1 {
@@ -28,6 +29,7 @@ main {
 
 .btn {
   font-size: 30px;
+  text-shadow: 2px 2px black;
 }
 
 .tombstone {
@@ -62,7 +64,7 @@ main {
 .death {
   position:absolute;
   z-index: 100;
-  cursor: url(scythe.cur), pointer;
+  cursor: pointer;
 }
 
 .death:hover{
@@ -88,4 +90,16 @@ main {
 
 h3 {
   font-family: 'IM Fell English SC', serif;
+}
+
+#dps {
+  font-size: 56px;
+}
+
+.text-light {
+  text-shadow: 2px 2px black;
+}
+
+#weapon-img {
+  min-width: 80px;
 }
