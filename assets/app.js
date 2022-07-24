@@ -1,22 +1,17 @@
 // TODO 
-// function for hero health
 // function for boss health (hidden)
-// interval for boss Attack
 // potion function
 // unlock hidden autoheal for merc at lvl 10
 // unlock ability to kill death if str and wpn 10+
-// max max message over 5000
 
 let resource = 3000000
 let strength = 1
-let petDamage = 0
-let mercDamage = 0
 let heroHealth = 100
 let bossHealth = 7500000
 let petAttackInterval = 3000
 let bossAttackInterval = 5000
 
-let weaponUrls = [ "assets/02.png", "assets/03.png", "assets/04.png", "assets/05.png", "assets/06.png", "assets/07.png", "assets/08.png", "assets/09.png", "assets/10.png", "assets/11.png",]
+let weaponUrls = ["assets/02.png", "assets/03.png", "assets/04.png", "assets/05.png", "assets/06.png", "assets/07.png", "assets/08.png", "assets/09.png", "assets/10.png", "assets/11.png",]
 
 let power = {
   name: "power",
@@ -36,6 +31,7 @@ let pet = {
   strength: 3,
   cost: 250,
   level: 0,
+  damage: 0,
 }
 
 let merc = {
@@ -43,6 +39,7 @@ let merc = {
   strength: 10,
   cost: 1000,
   level: 0,
+  damage: 0,
 }
 
 function mine() {
@@ -51,20 +48,18 @@ function mine() {
 }
 
 function petAttack() {
-  resource += petDamage
+  resource += merc.damage + pet.damage
   drawResource()
 }
 
 function bossAttack() {
-  if (heroHealth > 0) {
-    heroHealth -= 1
+  heroHealth--
+  drawHeroHealth()
+  if (heroHealth == 0) {
     drawHeroHealth()
-  } else if (heroHealth == 0) {
-    drawHeroHealth()
-    window.alert("You have died! You didn't think that DEATH would just sit there and let you steal his souls did you? Better luck next time kid!")
-    document.reload
+    window.confirm("You have died! You didn't think that DEATH would just sit there and let you steal his souls did you? Better luck next time kid!")
+    document.location.reload
   } else {
-    console.log(heroHealth)
   }
 }
 
@@ -136,7 +131,7 @@ function hirePet(upgrade) {
   if (upgrade.level < 9) {
     if (resource >= upgrade.cost) {
       resource -= upgrade.cost
-      upgradeDamage += upgrade.strength
+      upgrade.damage += upgrade.strength
       upgrade.level++
       upgrade.cost = upgrade.cost * 2
       drawPet(upgrade.name)
@@ -147,9 +142,9 @@ function hirePet(upgrade) {
     } else {
       window.alert("you cannot purchase loyalty with good looks alone!")
     }
-  } else {
+  } else if (resource >= upgrade.cost) {
     resource -= upgrade.cost
-    petDamage += upgrade.strength
+    upgrade.damage += upgrade.strength
     upgrade.level++
     upgrade.cost = upgrade.cost * 2
     drawResource()
@@ -161,6 +156,8 @@ function hirePet(upgrade) {
     upgradeElm.classList.add("d-none")
     let newButtonElm = document.getElementById("new-" + upgrade.name + "-btn")
     newButtonElm.classList.remove("d-none")
+  } else {
+    window.alert("you cannot purchase loyalty with good looks alone!")
   }
 }
 
@@ -176,7 +173,12 @@ function evolve(petName) {
 }
 
 function maxMessage() {
-  window.alert("this cannot be leveled up any further! ...psst try maxing other things!")
+  if (strength < 5000) {
+    window.alert("this cannot be leveled up any further! ...psst try maxing other things!")
+  }
+  else {
+    window.alert("Your power level is already over 5000!!!")
+  }
 }
 
 function drawResource() {
@@ -188,9 +190,9 @@ function drawDps() {
   let dpsElm = document.getElementById("dps")
   dpsElm.innerText = strength
   let petDmgElm = document.getElementById("pet-dmg")
-  petDmgElm.innerText = petDamage
+  petDmgElm.innerText = pet.damage
   let mercDamageElm = document.getElementById("merc-dmg")
-  mercDamageElm.innerText = mercDamage
+  mercDamageElm.innerText = merc.damage
 }
 
 function drawCost(upgrade) {
@@ -199,8 +201,9 @@ function drawCost(upgrade) {
 }
 
 function drawWeapon() {
+  let i = weapon.level - 1
   let weaponElm = document.getElementById("weapon-img")
-  weaponElm.src = weaponUrls[weapon.lvl]
+  weaponElm.src = weaponUrls[i]
 }
 
 function drawLvl(elmId, lvl) {
@@ -220,6 +223,10 @@ function drawPet(petName) {
   } else {
     petImgElm.src = ""
   }
+}
+
+function evolveMerc(){
+  let mercImgElm = document.getElementById("merc-img")
 }
 
 setInterval(bossAttack, bossAttackInterval)

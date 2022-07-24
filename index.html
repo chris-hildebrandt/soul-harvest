@@ -21,20 +21,23 @@
     <section class="row bg-dark text-light text-center p-2">
       <h1 class="p-0 m-0"><img class="image-fluid tombstone"
           src="https://images.fineartamerica.com/images/artworkimages/medium/3/retro-pixel-game-over-gravestone-louis-l-sullivan-transparent.png">
-        Soul Harvest 
+        Soul Harvest
         <img class="wallet-img" src="assets/sv6ffPf.gif" alt="">:<span id="resource-counter"></span>
       </h1>
     </section>
   </nav>
-  <main class="container">
+  <main class="container p-0">
     <section class="row m-0 p-0">
       <div class="col m-3 m-0 p-0">
-        <button id="power-btn" class="btn btn-warning upgrd text-light" onclick="upgradeStrength(power)">Upgrade Power</button>
+        <button id="power-btn" class="btn btn-warning upgrd text-light" onclick="upgradeStrength(power)">Upgrade
+          Power</button>
         <button id="new-power-btn" class="btn btn-dark upgrd d-none" onclick="maxMessage()">Level Max</button>
         <h3 class="m-0 pt-2 p-0 text-light">Cost:<span class="h1" id="power"> 25</span><img class="cost-img"
             src="assets/sv6ffPf.gif" alt=""> lvl: <span class="h3" id="power-lvl"> 1</span></h3>
       </div>
-      <div class="col-3 card text-center text-light p-0 m-0"><h3>Strength</h3><span id="dps"></span></div>
+      <div class="col-3 card text-center text-light p-0 m-0">
+        <h3>Strength</h3><span id="dps"></span>
+      </div>
     </section>
     <section class="row m-0 p-0">
       <div class="col m-3 m-0 p-0">
@@ -43,7 +46,10 @@
         <h3 class="m-0 pt-2 p-0 text-light">Cost:<span class="h1" id="weapon"> 100</span><img class="cost-img"
             src="assets/sv6ffPf.gif" alt=""> lvl: <span class="h3" id="weapon-lvl"> 0</span></h3>
       </div>
-      <div class="col-3 card text-center text-light p-0"><h3>Weapon</h3><img class="align-self-center image-fluid" id="weapon-img" src="assets/dagger/dagger_01.png" alt=""></div>
+      <div class="col-3 card text-center text-light p-0">
+        <h3>Weapon</h3><img class="align-self-center image-fluid" id="weapon-img" src="assets/dagger/dagger_01.png"
+          alt="">
+      </div>
     </section>
     <section class="row m-0 p-0">
       <div class="col m-3 m-0 p-0">
@@ -52,7 +58,8 @@
         <h3 class="m-0 pt-2 p-0 text-light">Cost:<span class="h1" id="pet"> 250</span><img class="cost-img"
             src="assets/sv6ffPf.gif" alt=""> lvl: <span class="h3" id="pet-lvl"> 0</span></h3>
       </div>
-      <div class="col-3 card text-center text-light p-0 m-0"><h3>Pet Stength</h3>
+      <div class="col-3 card text-center text-light p-0 m-0">
+        <h3>Pet Stength</h3>
         <span class="h3 text-large" id="pet-dmg"></span>
         <img class="image-fluid pet-img" id="pet-img" src="" alt="">
       </div>
@@ -64,11 +71,16 @@
         <h3 class="m-0 pt-2 p-0 text-light">Cost:<span class="h1" id="merc"> 1000</span><img class="cost-img"
             src="assets/sv6ffPf.gif" alt=""> lvl: <span class="h3" id="merc-lvl"> 0</span></h3>
       </div>
-      <div class="col-3 card text-center text-light p-0 m-0"><h3>Mercenary Strength</h3></div>
-      <span class="h3 text-large" id="merc-dmg"></span>
-      <img class="image-fluid merc-img" id="merc-img" src="assets/chars/darwin-gif.gif" alt="">
-      <img class="image-fluid merc2" id="" src="assets/05.gif" alt="">
+      <div class="col-3 card text-center text-light p-0 m-0">
+        <h3>Mercenary Strength</h3>
+        <span class="h3 text-large" id="merc-dmg"></span>
+      </div>
     </section>
+    <div class="img-crop">
+      <img class="merc-img p-0 d-none" id="merc-img"
+        src="assets/chars/lemo-arts-studio-dark-elf-remake-tier-3-500.gif" alt="">
+      <img class="merc2" id="merc-img2" src="assets/chars/Sacerdote2.gif" alt="">
+    </div>
     <section class="container">
       <section class="img-backdrop">
         <img class="death" onclick="mine()" src="assets/chars/LV42.gif" alt="">
@@ -77,8 +89,8 @@
     </section>
     <footer class="fixed-bottom bg-dark">
       <div class="progress">
-          <div id="hero-health" class="progress-bar bg-danger" role="progressbar" style="width: 100%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Your HP</div>
+        <div id="hero-health" class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="25"
+          aria-valuemin="0" aria-valuemax="100">Your HP</div>
       </div>
     </footer>
   </main>
