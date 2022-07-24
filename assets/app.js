@@ -8,6 +8,7 @@ let resource = 3000000
 let strength = 1
 let heroHealth = 100
 let bossHealth = 7500000
+let bossHealthPercent = 100
 let petAttackInterval = 3000
 let bossAttackInterval = 5000
 
@@ -43,8 +44,13 @@ let merc = {
 }
 
 function mine() {
+  if(weapon.level == 10 && power.level == 10){
+    bossHealth -= strength
+    drawBossHealth()
+  } else {
   resource += strength
   drawResource()
+  }
 }
 
 function petAttack() {
@@ -58,7 +64,7 @@ function bossAttack() {
   if (heroHealth == 0) {
     drawHeroHealth()
     window.confirm("You have died! You didn't think that DEATH would just sit there and let you steal his souls did you? Better luck next time kid!")
-    document.location.reload
+    location.reload()
   } else {
   }
 }
@@ -79,7 +85,7 @@ function upgradeWeapon() {
     } else {
       window.alert("you don't have enough resources!")
     }
-  } else {
+  } else if (resource >= weapon.cost) {
     resource -= weapon.cost
     strength += weapon.strength
     weapon.level++
@@ -94,6 +100,8 @@ function upgradeWeapon() {
     upgradeElm.classList.add("d-none")
     let newButtonElm = document.getElementById("new-weapon-btn")
     newButtonElm.classList.remove("d-none")
+  } else {
+    window.alert("you don't have enough resources!")
   }
 }
 
@@ -111,7 +119,7 @@ function upgradeStrength(upgrade) {
     } else {
       window.alert("you don't have enough resources!")
     }
-  } else {
+  } else if (resource >= upgrade.cost){
     resource -= upgrade.cost
     strength += upgrade.strength
     upgrade.level++
@@ -124,7 +132,9 @@ function upgradeStrength(upgrade) {
     upgradeElm.classList.add("d-none")
     let newButtonElm = document.getElementById("new-" + upgrade.name + "-btn")
     newButtonElm.classList.remove("d-none")
-  }
+  }else {
+    window.alert("you don't have enough resources!")
+}
 }
 
 function hirePet(upgrade) {
@@ -214,6 +224,13 @@ function drawLvl(elmId, lvl) {
 function drawHeroHealth() {
   let heroHealthElm = document.getElementById("hero-health")
   heroHealthElm.style.width = `${heroHealth}%`
+}
+
+function drawBossHealth() {
+  bossHealthPercent = (bossHealth/7500000)*100
+  let bossHealthElm = document.getElementById("boss-health")
+  bossHealthElm.innerHTML = `<div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: ${bossHealthPercent}%;" aria-valuenow="25"
+  aria-valuemin="0" aria-valuemax="7500000">${bossHealth}</div></div>`
 }
 
 function drawPet(petName) {
