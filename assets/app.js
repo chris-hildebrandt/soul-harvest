@@ -5,23 +5,18 @@
 // potion function
 // unlock hidden autoheal for merc at lvl 10
 // unlock ability to kill death if str and wpn 10+
-// death health is crazy high
+// max max message over 5000
 
 let resource = 3000000
 let strength = 1
 let petDamage = 0
+let mercDamage = 0
 let heroHealth = 100
 let bossHealth = 7500000
 let petAttackInterval = 3000
 let bossAttackInterval = 5000
 
-let weaponUrls = [
-]
-
-let petArmy = {
-  mercenary: 0,
-  wolf: 0,
-}
+let weaponUrls = [ "assets/02.png", "assets/03.png", "assets/04.png", "assets/05.png", "assets/06.png", "assets/07.png", "assets/08.png", "assets/09.png", "assets/10.png", "assets/11.png",]
 
 let power = {
   name: "power",
@@ -39,7 +34,7 @@ let weapon = {
 let pet = {
   name: "pet",
   strength: 3,
-  cost: 1,
+  cost: 250,
   level: 0,
 }
 
@@ -82,6 +77,7 @@ function upgradeWeapon() {
       weapon.strength *= 2
       weapon.cost *= 3
       drawResource()
+      drawWeapon()
       drawCost(weapon)
       drawDps()
       drawLvl('weapon-lvl', weapon.level)
@@ -95,6 +91,7 @@ function upgradeWeapon() {
     weapon.strength *= 2
     weapon.cost *= 3
     drawResource()
+    drawWeapon()
     drawCost(weapon)
     drawDps()
     drawLvl('weapon-lvl', weapon.level)
@@ -139,7 +136,7 @@ function hirePet(upgrade) {
   if (upgrade.level < 9) {
     if (resource >= upgrade.cost) {
       resource -= upgrade.cost
-      petDamage += upgrade.strength
+      upgradeDamage += upgrade.strength
       upgrade.level++
       upgrade.cost = upgrade.cost * 2
       drawPet(upgrade.name)
@@ -167,9 +164,14 @@ function hirePet(upgrade) {
   }
 }
 
-function evolve(petName){
-  if(petName == "pet"){
-    let petImgElm = document.getElementById("")
+function evolve(petName) {
+  let petImgElm = document.getElementById(petName + "-img")
+  if (petName == "pet") {
+    petImgElm.src = "https://cdna.artstation.com/p/assets/images/images/013/925/104/original/bilal-zubeidat-werewolf-attack.gif?1541686984"
+    petImgElm.classList.remove("pet-img")
+    petImgElm.classList.add("pet-evolved")
+  } else {
+
   }
 }
 
@@ -185,6 +187,10 @@ function drawResource() {
 function drawDps() {
   let dpsElm = document.getElementById("dps")
   dpsElm.innerText = strength
+  let petDmgElm = document.getElementById("pet-dmg")
+  petDmgElm.innerText = petDamage
+  let mercDamageElm = document.getElementById("merc-dmg")
+  mercDamageElm.innerText = mercDamage
 }
 
 function drawCost(upgrade) {
@@ -192,10 +198,9 @@ function drawCost(upgrade) {
   costElm.innerText = upgrade.cost
 }
 
-
 function drawWeapon() {
   let weaponElm = document.getElementById("weapon-img")
-  weaponElm.innerHTML
+  weaponElm.src = weaponUrls[weapon.lvl]
 }
 
 function drawLvl(elmId, lvl) {
@@ -208,15 +213,18 @@ function drawHeroHealth() {
   heroHealthElm.style.width = `${heroHealth}%`
 }
 
-function drawPet(petName){
-  let petImgElm = document.getElementById(petName+"-img")
+function drawPet(petName) {
+  let petImgElm = document.getElementById(petName + "-img")
+  if (petName == "pet") {
+    petImgElm.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d2c9935a-b5fd-49e2-befa-a3c1bea3ccba/dd31e94-858c9432-39a1-4482-bc99-9ec6671d082d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QyYzk5MzVhLWI1ZmQtNDllMi1iZWZhLWEzYzFiZWEzY2NiYVwvZGQzMWU5NC04NThjOTQzMi0zOWExLTQ0ODItYmM5OS05ZWM2NjcxZDA4MmQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Sl5If3zbx2BfwADfCPFbYl6tPSkXI26uErQMKiTApu4"
+  } else {
+    petImgElm.src = ""
+  }
 }
 
-// setInterval(bossAttack, bossAttackInterval)
+setInterval(bossAttack, bossAttackInterval)
 
 setInterval(petAttack, petAttackInterval)
-
-setInterval
 
 drawDps()
 
