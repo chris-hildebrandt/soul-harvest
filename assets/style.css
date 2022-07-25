@@ -5,12 +5,19 @@ font-family: 'Grenze Gotisch', cursive;
 font-family: 'IM Fell English SC', serif;
 font-family: 'Press Start 2P', cursive;
 font-family: 'Wendy One', sans-serif; */
-/* background-image: url(http://twistedsifter.com/wp-content/uploads/2013/05/animated-gifs-of-fighting-game-backgrounds-37.gif); */
+
+
 
 
 body {
   background-color: rgb(4, 4, 4);
   overflow-x: hidden;
+  background-image: url(http://twistedsifter.com/wp-content/uploads/2013/05/animated-gifs-of-fighting-game-backgrounds-37.gif);
+  /* background-image: url(EarlyJampackedAngora-size_restricted.gif); */
+  background-position: center;
+  background-size: cover;
+  height: 80vh;
+  /* overflow-y: hidden; */
 }
 
 h1 {
@@ -22,11 +29,7 @@ h1 {
 }
 
 main {
-  background-image: url(EarlyJampackedAngora-size_restricted.gif);
-  background-position: center;
-  background-size: cover;
-  min-height: 80vh;
-  overflow-y: hidden;
+
 }
 
 .btn {
@@ -57,8 +60,8 @@ main {
 }
 
 .death {
-  position: absolute;
-  z-index: 100;
+  /* position: absolute; */
+  z-index: 1000;
   cursor: pointer;
 }
 
@@ -110,17 +113,17 @@ h3 {
 }
 
 .merc-img {
-  /* position: absolute;
-  max-width: 600px;
-  left: 500px; */
-  margin: -160px 0px 0px -170px
+position: fixed;
+bottom: -13%;
+left: 5%;
+z-index: 1;
 }
 
 .merc2 {
-  /* position: absolute;
-  max-width: 800px;
-  left: 500px; */
-margin: 75px 0px 0px 0px;
+  position: fixed;
+  height: 45vh;
+  bottom: 50px;
+  left: 15%;
 }
 
 .pet-evolved {
@@ -133,7 +136,6 @@ margin: 75px 0px 0px 0px;
 .img-crop {
   width: 350px;
   height: 350px;
-
 }
 
 .deathbox {
@@ -141,4 +143,8 @@ margin: 75px 0px 0px 0px;
   height: 548px;
   width: 500px;
   overflow: hidden;
+}
+
+.button-row {
+  z-index: 1000;
 }
