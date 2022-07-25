@@ -148,3 +148,16 @@ z-index: 1;
 .button-row {
   z-index: 1000;
 }
+
+.potion:hover {
+  transform: scale(1.05);
+}
+
+.potion {
+  width: 80px
+}
+
+.potion-text {
+  font-size: 36px;
+  font-family: 'IM Fell English SC', serif;
+}

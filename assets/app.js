@@ -24,6 +24,11 @@ function DPSReset() {
 
 let weaponUrls = ["assets/02.png", "assets/03.png", "assets/04.png", "assets/05.png", "assets/06.png", "assets/07.png", "assets/08.png", "assets/09.png", "assets/10.png", "assets/11.png",]
 
+let potion = {
+  cost: 250,
+  level: 1,
+}
+
 let power = {
   name: "power",
   strength: 1,
@@ -154,7 +159,6 @@ function upgradeStrength(upgrade) {
 }
 
 function hirePet(upgrade) {
-  debugger
   if (upgrade.level < 9) {
     if (resource >= upgrade.cost) {
       resource -= upgrade.cost
@@ -267,6 +271,17 @@ function drawPet(petName) {
   } else {
     let mercImgElm = document.getElementById("merc-img")
     mercImgElm.classList.remove("d-none")
+  }
+}
+
+function buyPotion() {
+  if (potion.cost <= resource) {
+    resource -= potion.cost
+    heroHealth += 50
+    potion.level++
+    potion.cost = potion.cost * potion.level
+    let potionElm = document.getElementById("potion-cost")
+    potionElm.innerText = potion.cost
   }
 }
 
