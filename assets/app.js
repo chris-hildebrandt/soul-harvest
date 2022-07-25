@@ -1,16 +1,15 @@
 // TODO 
-// function for boss health (hidden)
 // potion function
-// unlock hidden autoheal for merc at lvl 10
+// add trophy for unlocking pet and merc maxlvl
 // unlock ability to kill death if str and wpn 10+
 
 let resource = 3000000
 let strength = 1
 let heroHealth = 100
-let bossHealth = 7500000
+let bossHealth = 500000
 let bossHealthPercent = 100
 let petAttackInterval = 3000
-let bossAttackInterval = 5000
+let bossAttackInterval = 2000
 
 let weaponUrls = ["assets/02.png", "assets/03.png", "assets/04.png", "assets/05.png", "assets/06.png", "assets/07.png", "assets/08.png", "assets/09.png", "assets/10.png", "assets/11.png",]
 
@@ -44,12 +43,17 @@ let merc = {
 }
 
 function mine() {
-  if(weapon.level == 10 && power.level == 10){
-    bossHealth -= strength
+  if (power.level == 10 && weapon.level == 10 && pet.level == 10 && merc.level == 10) {
+    bossHealth -= strength + merc.damage + pet.damage
+    heroHealth + 0.1
     drawBossHealth()
+  } else if (merc.level == 10) {
+    resource += strength
+    heroHealth++
+    drawResource()
   } else {
-  resource += strength
-  drawResource()
+    resource += strength
+    drawResource()
   }
 }
 
@@ -65,7 +69,6 @@ function bossAttack() {
     drawHeroHealth()
     window.confirm("You have died! You didn't think that DEATH would just sit there and let you steal his souls did you? Better luck next time kid!")
     location.reload()
-  } else {
   }
 }
 
@@ -119,7 +122,7 @@ function upgradeStrength(upgrade) {
     } else {
       window.alert("you don't have enough resources!")
     }
-  } else if (resource >= upgrade.cost){
+  } else if (resource >= upgrade.cost) {
     resource -= upgrade.cost
     strength += upgrade.strength
     upgrade.level++
@@ -132,12 +135,13 @@ function upgradeStrength(upgrade) {
     upgradeElm.classList.add("d-none")
     let newButtonElm = document.getElementById("new-" + upgrade.name + "-btn")
     newButtonElm.classList.remove("d-none")
-  }else {
+  } else {
     window.alert("you don't have enough resources!")
-}
+  }
 }
 
 function hirePet(upgrade) {
+  debugger
   if (upgrade.level < 9) {
     if (resource >= upgrade.cost) {
       resource -= upgrade.cost
@@ -177,8 +181,13 @@ function evolve(petName) {
     petImgElm.src = "https://cdna.artstation.com/p/assets/images/images/013/925/104/original/bilal-zubeidat-werewolf-attack.gif?1541686984"
     petImgElm.classList.remove("pet-img")
     petImgElm.classList.add("pet-evolved")
+    petAttackInterval = 1500
   } else {
-
+    let mercImgElm = document.getElementById("merc-img")
+    mercImgElm.classList.add("d-none")
+    let evolvedMercElm = document.getElementById("merc-img2")
+    evolvedMercElm.classList.remove("d-none")
+    bossAttackInterval = 4000
   }
 }
 
@@ -227,7 +236,7 @@ function drawHeroHealth() {
 }
 
 function drawBossHealth() {
-  bossHealthPercent = (bossHealth/7500000)*100
+  bossHealthPercent = (bossHealth / 7500000) * 100
   let bossHealthElm = document.getElementById("boss-health")
   bossHealthElm.innerHTML = `<div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: ${bossHealthPercent}%;" aria-valuenow="25"
   aria-valuemin="0" aria-valuemax="7500000">${bossHealth}</div></div>`
@@ -237,13 +246,10 @@ function drawPet(petName) {
   let petImgElm = document.getElementById(petName + "-img")
   if (petName == "pet") {
     petImgElm.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d2c9935a-b5fd-49e2-befa-a3c1bea3ccba/dd31e94-858c9432-39a1-4482-bc99-9ec6671d082d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QyYzk5MzVhLWI1ZmQtNDllMi1iZWZhLWEzYzFiZWEzY2NiYVwvZGQzMWU5NC04NThjOTQzMi0zOWExLTQ0ODItYmM5OS05ZWM2NjcxZDA4MmQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Sl5If3zbx2BfwADfCPFbYl6tPSkXI26uErQMKiTApu4"
-  } else {
-    petImgElm.src = ""
+  } else { 
+    let mercImgElm = document.getElementById("merc-img")
+    mercImgElm.classList.remove("d-none")
   }
-}
-
-function evolveMerc(){
-  let mercImgElm = document.getElementById("merc-img")
 }
 
 setInterval(bossAttack, bossAttackInterval)

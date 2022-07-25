@@ -106,16 +106,23 @@ h3 {
 }
 
 .pet-img {
-  position: absolute;
+  position: fixed;
   z-index: 100;
-  right: 70px;
-  top: 150px
+  right: 200px;
+  bottom: 0%;
+}
+
+.pet-evolved {
+  position: fixed;
+  max-width: 450px;
+  right: 260px;
+  bottom: 70px;
 }
 
 .merc-img {
 position: fixed;
-bottom: -13%;
-left: 5%;
+bottom: 5%;
+left: 20%;
 z-index: 1;
 }
 
@@ -124,13 +131,6 @@ z-index: 1;
   height: 45vh;
   bottom: 50px;
   left: 15%;
-}
-
-.pet-evolved {
-  position: absolute;
-  max-width: 500px;
-  right: 70px;
-  top: 100px;
 }
 
 .img-crop {
