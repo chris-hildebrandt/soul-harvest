@@ -10,6 +10,17 @@ let bossHealth = 7500000
 let bossHealthPercent = 100
 let petAttackInterval = 3000
 let bossAttackInterval = 2000
+let clicksPerSecond = 0
+let DPS = 0
+
+let deathButton = document.querySelector(".death")
+deathButton.addEventListener("click", function () {
+  clicksPerSecond += 1;
+})
+
+function DPSReset() {
+  clicksPerSecond = 0
+}
 
 let weaponUrls = ["assets/02.png", "assets/03.png", "assets/04.png", "assets/05.png", "assets/06.png", "assets/07.png", "assets/08.png", "assets/09.png", "assets/10.png", "assets/11.png",]
 
@@ -43,6 +54,7 @@ let merc = {
 }
 
 function mine() {
+  DPS = clicksPerSecond * strength + (pet.damage + merc.damage) / (petAttackInterval / 1000)
   if (power.level == 10 && weapon.level == 10 && pet.level == 10 && merc.level == 10) {
     bossHealth -= strength + merc.damage + pet.damage
     heroHealth += 0.05
@@ -65,9 +77,10 @@ function petAttack() {
 function bossAttack() {
   heroHealth--
   drawHeroHealth()
-  if (heroHealth == 0) {
+  if (heroHealth <= 0) {
     drawHeroHealth()
-    window.confirm("You have died! You didn't think that DEATH would just sit there and let you steal his souls did you? Better luck next time kid!")
+    clearInterval(bossInterval)
+    window.alert("You have died! You didn't think that DEATH would just sit there and let you steal his souls did you? Better luck next time kid!")
     location.reload()
   }
 }
@@ -203,6 +216,8 @@ function maxMessage() {
 function drawResource() {
   let walletElm = document.getElementById("resource-counter")
   walletElm.innerText = resource
+  let totalDPSElm = document.getElementById("total-dps")
+  totalDPSElm.innerText = DPS
 }
 
 function drawDps() {
@@ -240,7 +255,7 @@ function drawBossHealth() {
   let bossHealthElm = document.getElementById("boss-health")
   bossHealthElm.innerHTML = `<div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: ${bossHealthPercent}%;" aria-valuenow="25"
   aria-valuemin="0" aria-valuemax="7500000">${bossHealth}</div></div>`
-  if(bossHealth <= 0){
+  if (bossHealth <= 0) {
     window.confirm("AMAZING!! You have defeated DEATH itself! The halls of time will ring with your praises and your name will live on forever in glory!!! Actually, everything will live on forever... think of the consequences... whelp, good luck with overpopulation!")
   }
 }
@@ -249,15 +264,17 @@ function drawPet(petName) {
   let petImgElm = document.getElementById(petName + "-img")
   if (petName == "pet") {
     petImgElm.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d2c9935a-b5fd-49e2-befa-a3c1bea3ccba/dd31e94-858c9432-39a1-4482-bc99-9ec6671d082d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QyYzk5MzVhLWI1ZmQtNDllMi1iZWZhLWEzYzFiZWEzY2NiYVwvZGQzMWU5NC04NThjOTQzMi0zOWExLTQ0ODItYmM5OS05ZWM2NjcxZDA4MmQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Sl5If3zbx2BfwADfCPFbYl6tPSkXI26uErQMKiTApu4"
-  } else { 
+  } else {
     let mercImgElm = document.getElementById("merc-img")
     mercImgElm.classList.remove("d-none")
   }
 }
 
-setInterval(bossAttack, bossAttackInterval)
+let bossInterval = setInterval(bossAttack, bossAttackInterval)
 
 setInterval(petAttack, petAttackInterval)
+
+setInterval(DPSReset, 1000)
 
 drawDps()
 
