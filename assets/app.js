@@ -3,7 +3,7 @@
 // add trophy for unlocking pet and merc maxlvl
 // unlock ability to kill death if str and wpn 10+
 
-let resource = 3000000
+let resource = 5000000
 let strength = 1
 let heroHealth = 100
 let bossHealth = 500000
