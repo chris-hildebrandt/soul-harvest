@@ -11,12 +11,30 @@
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=DotGothic16&family=Grenze+Gotisch:wght@100&family=IM+Fell+English+SC&family=Press+Start+2P&family=Wendy+One&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=DotGothic16&family=Grenze+Gotisch:wght@100&family=IM+Fell+English+SC&family=Press+Start+2P&family=Wendy+One&display=swap"
     rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"> -->
 </head>
 
-<body>
+<style>
+  body.debug .container,
+  body.debug .container-fluid {
+    outline: 2px double blue;
+    outline-offset: -2px;
+  }
+
+  body.debug .row {
+    outline: 2px dashed red;
+    outline-offset: -2px;
+  }
+
+  body.debug [class*="col-"] {
+    outline: 2px dotted forestgreen;
+    outline-offset: -3px;
+  }
+</style>
+
+<body class="debug">
   <nav class="container-fluid">
     <section class="row bg-dark text-light text-center p-2">
       <h1 class="p-0 m-0"><img class="image-fluid tombstone"
@@ -26,9 +44,9 @@
       </h1>
     </section>
   </nav>
-  <main class="container justify-content-center">
+  <main class="container">
     <!-- SECTION Upgrade Buttons -->
-    <section class="row  justify-content-evenly align-items-center">
+    <section class="row">
       <div class="col-3">
         <button id="power-btn" class="btn btn-warning upgrd text-light" onclick="upgradeStrength(power)">Upgrade
           Power</button>
@@ -36,26 +54,27 @@
         <h3 class="text-light">Cost:<span class="h1" id="power"> 25</span><img class="cost-img" src="assets/sv6ffPf.gif"
             alt=""> lvl: <span class="h3" id="power-lvl"> 1</span></h3>
       </div>
-      <div class="col-3 ">
+      <div class="col-3">
         <button id="weapon-btn" class="btn btn-danger upgrd" onclick="upgradeWeapon()">Upgrade Weapon</button>
         <button id="new-weapon-btn" class="btn btn-dark upgrd d-none" onclick="maxMessage()">Level Max</button>
         <h3 class="text-light">Cost:<span class="h1" id="weapon"> 100</span><img class="cost-img"
             src="assets/sv6ffPf.gif" alt=""> lvl: <span class="h3" id="weapon-lvl"> 0</span></h3>
       </div>
-      <div class="col-3 ">
+      <div class="col-3">
         <button id="pet-btn" class="btn btn-success upgrd" onclick="hirePet(pet)">Train Pet</button>
         <button id="new-pet-btn" class="btn btn-dark upgrd d-none" onclick="maxMessage()">Level Max</button>
         <h3 class="text-light">Cost:<span class="h1" id="pet"> 250</span><img class="cost-img" src="assets/sv6ffPf.gif"
             alt=""> lvl: <span class="h3" id="pet-lvl"> 0</span></h3>
       </div>
-      <div class="col-3 ">
+      <div class="col-3">
         <button id="merc-btn" class="btn btn-primary upgrd" onclick="hirePet(merc)">Train Mercenary</button>
         <button id="new-merc-btn" class="btn btn-dark upgrd d-none" onclick="maxMessage()">Level Max</button>
         <h3 class="text-light">Cost:<span class="h1" id="merc"> 1000</span><img class="cost-img"
             src="assets/sv6ffPf.gif" alt=""> lvl: <span class="h3" id="merc-lvl"> 0</span></h3>
       </div>
+
       <!-- SECTION Info Boxes -->
-      <section class="row ">
+      <section class="row m-0 sprite-box">
         <div class="col-3 card text-center text-light p-0 m-0">
           <h3>Strength</h3><span id="dps"></span>
         </div>
@@ -80,7 +99,7 @@
           src="assets/chars/lemo-arts-studio-dark-elf-remake-tier-3-500.gif" alt="">
         <img class="merc2" id="merc-img2" src="assets/chars/Sacerdote2.gif" alt="">
       </div>
-      <section class="deathbox">
+      <section class="deathbox center p-0">
         <div id="boss-health"></div>
         <img class="death" onclick="mine()" src="assets/chars/LV42.gif" alt="">
         <img class="overlay fire" src="assets/Blueflame.gif" alt="">
@@ -94,6 +113,7 @@
       </div>
     </footer>
   </main>
+  <!-- <script src="sweetalert2.all.min.js"></script> -->
   <script src="assets/app.js"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"

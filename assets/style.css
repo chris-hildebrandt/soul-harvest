@@ -11,7 +11,6 @@ font-family: 'Wendy One', sans-serif; */
 body {
   background-color: rgb(4, 4, 4);
   overflow-x: hidden;
-  /* overflow-y: hidden; */
 }
 
 h1 {
@@ -27,6 +26,7 @@ main {
   background-position: center;
   background-size: cover;
   min-height: 80vh;
+  overflow-y: hidden;
 }
 
 .btn {
@@ -38,11 +38,6 @@ main {
   max-width: 64px;
 }
 
-.img-backdrop {
-  position: relative;
-  top: -500px;
-  left: 400px;
-}
 
 .fire {
   opacity: .6;
@@ -50,8 +45,7 @@ main {
 
 .overlay {
   position: absolute;
-  bottom: 0px;
-  min-width: 500px;
+  width: 500px;
 }
 
 .wallet-img {
@@ -76,7 +70,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 1px;
 }
 
 .upgrd {
@@ -140,10 +133,12 @@ margin: 75px 0px 0px 0px;
 .img-crop {
   width: 350px;
   height: 350px;
-  overflow: hidden;
+
 }
 
 .deathbox {
-  height: 600px;
-  width: 600px
+  position: relative;
+  height: 548px;
+  width: 500px;
+  overflow: hidden;
 }
