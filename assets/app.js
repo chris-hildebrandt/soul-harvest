@@ -217,7 +217,7 @@ function drawResource() {
   let walletElm = document.getElementById("resource-counter")
   walletElm.innerText = resource
   let totalDPSElm = document.getElementById("total-dps")
-  totalDPSElm.innerText = DPS
+  totalDPSElm.innerText = DPS.toFixed(0)
 }
 
 function drawDps() {
