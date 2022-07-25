@@ -3,10 +3,10 @@
 // add trophy for unlocking pet and merc maxlvl
 // unlock ability to kill death if str and wpn 10+
 
-let resource = 5000000
+let resource = 0
 let strength = 1
 let heroHealth = 100
-let bossHealth = 500000
+let bossHealth = 7500000
 let bossHealthPercent = 100
 let petAttackInterval = 3000
 let bossAttackInterval = 2000
@@ -45,11 +45,11 @@ let merc = {
 function mine() {
   if (power.level == 10 && weapon.level == 10 && pet.level == 10 && merc.level == 10) {
     bossHealth -= strength + merc.damage + pet.damage
-    heroHealth + 0.1
+    heroHealth += 0.05
     drawBossHealth()
   } else if (merc.level == 10) {
     resource += strength
-    heroHealth++
+    heroHealth += 0.05
     drawResource()
   } else {
     resource += strength
@@ -240,6 +240,9 @@ function drawBossHealth() {
   let bossHealthElm = document.getElementById("boss-health")
   bossHealthElm.innerHTML = `<div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: ${bossHealthPercent}%;" aria-valuenow="25"
   aria-valuemin="0" aria-valuemax="7500000">${bossHealth}</div></div>`
+  if(bossHealth <= 0){
+    window.confirm("AMAZING!! You have defeated DEATH itself! The halls of time will ring with your praises and your name will live on forever in glory!!! Actually, everything will live on forever... think of the consequences... whelp, good luck with overpopulation!")
+  }
 }
 
 function drawPet(petName) {
