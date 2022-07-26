@@ -3,7 +3,7 @@
 // add trophy for unlocking pet and merc maxlvl
 // unlock ability to kill death if str and wpn 10+
 
-let resource = 5000000
+let resource = 0
 let strength = 1
 let heroHealth = 100
 let bossHealth = 75000
@@ -44,7 +44,7 @@ let weapon = {
 
 let pet = {
   name: "pet",
-  strength: 3,
+  strength: 50,
   cost: 250,
   level: 0,
   damage: 0,
@@ -52,7 +52,7 @@ let pet = {
 
 let merc = {
   name: "merc",
-  strength: 10,
+  strength: 250,
   cost: 1000,
   level: 0,
   damage: 0,
