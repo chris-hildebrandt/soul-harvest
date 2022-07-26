@@ -259,7 +259,13 @@ function drawBossHealth() {
   let bossHealthElm = document.getElementById("boss-health")
   bossHealthElm.innerHTML = `<div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: ${bossHealthPercent}%;" aria-valuenow="25"
   aria-valuemin="0" aria-valuemax="7500000">${bossHealth}</div></div>`
+  let bossMusicElm = document.getElementById("boss-music")
+  bossMusicElm.removeAttribute("muted")
   if (bossHealth <= 0) {
+    let bossMusicElm = document.getElementById("boss-music")
+    bossMusicElm.addAttribute("muted")
+    let victoryFanfareElm = document.getElementById("victory-music")
+    victoryFanfareElm.removeAttribute("muted")
     window.confirm("AMAZING!! You have defeated DEATH itself! The halls of time will ring with your praises and your name will live on forever in glory!!! Actually, everything will live on forever... think of the consequences... whelp, good luck with overpopulation!")
   }
 }
