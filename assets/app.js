@@ -3,10 +3,10 @@
 // add trophy for unlocking pet and merc maxlvl
 // unlock ability to kill death if str and wpn 10+
 
-let resource = 0
+let resource = 5000000
 let strength = 1
 let heroHealth = 100
-let bossHealth = 7500000
+let bossHealth = 75000
 let bossHealthPercent = 100
 let petAttackInterval = 3000
 let bossAttackInterval = 2000
@@ -260,13 +260,14 @@ function drawBossHealth() {
   bossHealthElm.innerHTML = `<div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: ${bossHealthPercent}%;" aria-valuenow="25"
   aria-valuemin="0" aria-valuemax="7500000">${bossHealth}</div></div>`
   let bossMusicElm = document.getElementById("boss-music")
-  bossMusicElm.removeAttribute("muted")
+  bossMusicElm.play()
   if (bossHealth <= 0) {
     let bossMusicElm = document.getElementById("boss-music")
-    bossMusicElm.addAttribute("muted")
+    bossMusicElm.pause()
     let victoryFanfareElm = document.getElementById("victory-music")
-    victoryFanfareElm.removeAttribute("muted")
+    victoryFanfareElm.play()
     window.confirm("AMAZING!! You have defeated DEATH itself! The halls of time will ring with your praises and your name will live on forever in glory!!! Actually, everything will live on forever... think of the consequences... whelp, good luck with overpopulation!")
+    location.reload()
   }
 }
 
