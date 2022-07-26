@@ -45,14 +45,14 @@ let weapon = {
 let pet = {
   name: "pet",
   strength: 50,
-  cost: 250,
+  cost: 500,
   level: 0,
   damage: 0,
 }
 
 let merc = {
   name: "merc",
-  strength: 250,
+  strength: 200,
   cost: 1000,
   level: 0,
   damage: 0,
