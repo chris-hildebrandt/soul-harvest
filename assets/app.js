@@ -292,7 +292,16 @@ function buyPotion() {
   }
 }
 
+function pauseMusic(){
+  let bossMusicElm = document.getElementById("boss-music")
+  bossMusicElm.pause()
+  let victoryFanfareElm = document.getElementById("victory-music")
+  victoryFanfareElm.pause()
+}
+
 let bossInterval = setInterval(bossAttack, bossAttackInterval)
+
+pauseMusic()
 
 setInterval(petAttack, petAttackInterval)
 
