@@ -6,7 +6,7 @@
 let resource = 0
 let strength = 1
 let heroHealth = 100
-let bossHealth = 75000000
+let bossHealth = 7500000
 let bossHealthPercent = 100
 let petAttackInterval = 3000
 let bossAttackInterval = 2000
@@ -14,6 +14,7 @@ let clicksPerSecond = 0
 let DPS = 0
 
 let deathButton = document.querySelector(".death")
+// @ts-ignore
 deathButton.addEventListener("click", function () {
   clicksPerSecond += 1;
 })
@@ -118,8 +119,10 @@ function upgradeWeapon() {
     drawDps()
     drawLvl('weapon-lvl', weapon.level)
     let upgradeElm = document.getElementById("weapon-btn")
+    // @ts-ignore
     upgradeElm.classList.add("d-none")
     let newButtonElm = document.getElementById("new-weapon-btn")
+    // @ts-ignore
     newButtonElm.classList.remove("d-none")
   } else {
     window.alert("you don't have enough resources!")
@@ -150,8 +153,10 @@ function upgradeStrength(upgrade) {
     drawDps()
     drawLvl(upgrade.name + '-lvl', upgrade.level)
     let upgradeElm = document.getElementById(upgrade.name + "-btn")
+    // @ts-ignore
     upgradeElm.classList.add("d-none")
     let newButtonElm = document.getElementById("new-" + upgrade.name + "-btn")
+    // @ts-ignore
     newButtonElm.classList.remove("d-none")
   } else {
     window.alert("you don't have enough resources!")
@@ -184,8 +189,10 @@ function hirePet(upgrade) {
     drawLvl(upgrade.name + '-lvl', upgrade.level)
     evolve(upgrade.name)
     let upgradeElm = document.getElementById(upgrade.name + "-btn")
+    // @ts-ignore
     upgradeElm.classList.add("d-none")
     let newButtonElm = document.getElementById("new-" + upgrade.name + "-btn")
+    // @ts-ignore
     newButtonElm.classList.remove("d-none")
   } else {
     window.alert("you cannot purchase loyalty with good looks alone!")
@@ -195,14 +202,19 @@ function hirePet(upgrade) {
 function evolve(petName) {
   let petImgElm = document.getElementById(petName + "-img")
   if (petName == "pet") {
+    // @ts-ignore
     petImgElm.src = "https://cdna.artstation.com/p/assets/images/images/013/925/104/original/bilal-zubeidat-werewolf-attack.gif?1541686984"
+    // @ts-ignore
     petImgElm.classList.remove("pet-img")
+    // @ts-ignore
     petImgElm.classList.add("pet-evolved")
     petAttackInterval = 1500
   } else {
     let mercImgElm = document.getElementById("merc-img")
+    // @ts-ignore
     mercImgElm.classList.add("d-none")
     let evolvedMercElm = document.getElementById("merc-img2")
+    // @ts-ignore
     evolvedMercElm.classList.remove("d-none")
     bossAttackInterval = 4000
   }
@@ -219,52 +231,65 @@ function maxMessage() {
 
 function drawResource() {
   let walletElm = document.getElementById("resource-counter")
+  // @ts-ignore
   walletElm.innerText = resource
   let totalDPSElm = document.getElementById("total-dps")
+  // @ts-ignore
   totalDPSElm.innerText = DPS.toFixed(0)
 }
 
 function drawDps() {
   let dpsElm = document.getElementById("dps")
+  // @ts-ignore
   dpsElm.innerText = strength
   let petDmgElm = document.getElementById("pet-dmg")
+  // @ts-ignore
   petDmgElm.innerText = pet.damage
   let mercDamageElm = document.getElementById("merc-dmg")
+  // @ts-ignore
   mercDamageElm.innerText = merc.damage
 }
 
 function drawCost(upgrade) {
   let costElm = document.getElementById(upgrade.name)
+  // @ts-ignore
   costElm.innerText = upgrade.cost
 }
 
 function drawWeapon() {
   let i = weapon.level - 1
   let weaponElm = document.getElementById("weapon-img")
+  // @ts-ignore
   weaponElm.src = weaponUrls[i]
 }
 
 function drawLvl(elmId, lvl) {
   let lvlElm = document.getElementById(elmId)
+  // @ts-ignore
   lvlElm.innerText = lvl
 }
 
 function drawHeroHealth() {
   let heroHealthElm = document.getElementById("hero-health")
+  // @ts-ignore
   heroHealthElm.style.width = `${heroHealth}%`
 }
 
 function drawBossHealth() {
   bossHealthPercent = (bossHealth / 7500000) * 100
   let bossHealthElm = document.getElementById("boss-health")
+  // @ts-ignore
   bossHealthElm.innerHTML = `<div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: ${bossHealthPercent}%;" aria-valuenow="25"
   aria-valuemin="0" aria-valuemax="7500000">${bossHealth}</div></div>`
   let bossMusicElm = document.getElementById("boss-music")
+  // @ts-ignore
   bossMusicElm.play()
   if (bossHealth <= 0) {
     let bossMusicElm = document.getElementById("boss-music")
+    // @ts-ignore
     bossMusicElm.pause()
     let victoryFanfareElm = document.getElementById("victory-music")
+    // @ts-ignore
     victoryFanfareElm.play()
     window.confirm("AMAZING!! You have defeated DEATH itself! The halls of time will ring with your praises and your name will live on forever in glory!!! Actually, everything will live on forever... think of the consequences... whelp, good luck with overpopulation!")
     location.reload()
@@ -274,9 +299,11 @@ function drawBossHealth() {
 function drawPet(petName) {
   let petImgElm = document.getElementById(petName + "-img")
   if (petName == "pet") {
+    // @ts-ignore
     petImgElm.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d2c9935a-b5fd-49e2-befa-a3c1bea3ccba/dd31e94-858c9432-39a1-4482-bc99-9ec6671d082d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QyYzk5MzVhLWI1ZmQtNDllMi1iZWZhLWEzYzFiZWEzY2NiYVwvZGQzMWU5NC04NThjOTQzMi0zOWExLTQ0ODItYmM5OS05ZWM2NjcxZDA4MmQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Sl5If3zbx2BfwADfCPFbYl6tPSkXI26uErQMKiTApu4"
   } else {
     let mercImgElm = document.getElementById("merc-img")
+    // @ts-ignore
     mercImgElm.classList.remove("d-none")
   }
 }
@@ -288,14 +315,17 @@ function buyPotion() {
     potion.level++
     potion.cost = potion.cost * potion.level
     let potionElm = document.getElementById("potion-cost")
+    // @ts-ignore
     potionElm.innerText = potion.cost
   }
 }
 
 function pauseMusic(){
   let bossMusicElm = document.getElementById("boss-music")
+  // @ts-ignore
   bossMusicElm.pause()
   let victoryFanfareElm = document.getElementById("victory-music")
+  // @ts-ignore
   victoryFanfareElm.pause()
 }
 
