@@ -1,8 +1,3 @@
-// TODO 
-// potion function
-// add trophy for unlocking pet and merc maxlvl
-// unlock ability to kill death if str and wpn 10+
-
 let resource = 0
 let strength = 1
 let heroHealth = 100
